@@ -142,61 +142,38 @@
 	  <!-- Placeholder for total word count -->
 	  
 
-<p id="totalWordCount">Calculating word count...</p>
 
-<hr>
-
-<script>
-  // Function to calculate word count for a section
-  function displayWordCount(sectionId) {
-    const section = document.getElementById(sectionId);
+function countWords(id) {
+    const section = document.getElementById(id);
 
     if (!section) {
-      console.error("Section not found: " + sectionId);
-      return 0;
+        console.error("Cannot find section:", id);
+        return 0;
     }
 
-    const text = section.textContent.trim();
+    const text = section.innerText.trim();
 
-    if (text === "") {
-      return 0;
-    }
+    return text ? text.split(/\s+/).length : 0;
+}
 
-    return text.split(/\s+/).length;
-  }
+function displayTotalWordCount() {
 
-  // Calculate total word count
-  function displayTotalWordCount() {
+    const abstract = countWords("Abstract_InText");
+    const introduction = countWords("Introduction_InText");
+    const analysis = countWords("Analysis_InText");
+    const discussion = countWords("Discussion_InText");
 
-    const AbstractCount =
-      displayWordCount("Abstract_InText");
+    const total = abstract + introduction + analysis + discussion;
 
-    const IntroductionCount =
-      displayWordCount("Introduction_InText");
-
-    const AnalysisCount =
-      displayWordCount("Analysis_InText");
-
-    const DiscussionCount =
-      displayWordCount("Discussion_InText");
-
-    // Add all four sections together
-    const totalWordCount =
-      AbstractCount +
-      IntroductionCount +
-      AnalysisCount +
-      DiscussionCount;
-
-    // Display individual and total counts
     document.getElementById("totalWordCount").innerText =
-      `Abstract: ${AbstractCount} | ` +
-      `Introduction: ${IntroductionCount} | ` +
-      `Analysis: ${AnalysisCount} | ` +
-      `Discussion: ${DiscussionCount} | ` +
-      `TOTAL WORD COUNT: ${totalWordCount}`;
-  }
+        `Abstract: ${abstract} | ` +
+        `Introduction: ${introduction} | ` +
+        `Analysis: ${analysis} | ` +
+        `Discussion: ${discussion} | ` +
+        `TOTAL WORD COUNT: ${total}`;
+}
 
-  // Run when page loads
-  document.addEventListener("DOMContentLoaded", displayTotalWordCount);
+document.addEventListener("DOMContentLoaded", displayTotalWordCount);
+
 </script>
 
