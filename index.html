@@ -139,10 +139,11 @@
     window.onload = getLastUpdatedTime;
 </script>
 
-	  <!-- Placeholder for total word count -->
-	  
 
+<!-- Word count display -->
+<p id="totalWordCount">Calculating word count...</p>
 
+<script>
 function countWords(id) {
     const section = document.getElementById(id);
 
@@ -157,7 +158,6 @@ function countWords(id) {
 }
 
 function displayTotalWordCount() {
-
     const abstract = countWords("Abstract_InText");
     const introduction = countWords("Introduction_InText");
     const analysis = countWords("Analysis_InText");
@@ -174,6 +174,9 @@ function displayTotalWordCount() {
 }
 
 document.addEventListener("DOMContentLoaded", displayTotalWordCount);
+</script>
+</body>
+
 
 </script>
 
