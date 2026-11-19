@@ -28,10 +28,6 @@
       background-color: #dddddd
     }
   
-  
-  
-  
-  
   </style>
   
 <style>
@@ -66,6 +62,12 @@
 	(Jhe, Bloch and Lamond, 2012, p.57)
 	</pre>
   </p>
+
+<p class="exl">
+  <pre>
+    Analysis and disucssion: discussion bla bla bla
+  </pre>
+  </p>
 	
 
 <!table of contents>
@@ -80,7 +82,7 @@
       <tr>
         <td><a href="#Introduction">Introduction</td>
       </tr>
-
+<td><a href="#Analysis and discussion</td>
       <tr>
         <td><a href="#References">References</td>
       </tr>
@@ -138,32 +140,63 @@
 </script>
 
 	  <!-- Placeholder for total word count -->
-<p id="totalWordCount"></p>
-<hr>
-<script>
-  // Function to calculate and display word count for a specified section
-  function displayWordCount(sectionId, outputId) {
-    // Get the text content from the specified section
-    const text = document.getElementById(sectionId).textContent;
-    // Split text into words based on spaces and filter out any empty strings
-    const wordArray = text.trim().split(/\s+/);
-    // Count the words
-    const wordCount = wordArray.length;
-    // Return the word count for summing purposes
-    return wordCount;
-  }
-  // Function to calculate and display total word count from selected sections
-  function displayTotalWordCount() {
-    // Calculate word count for each section and accumulate the total
-    const IntroductionCount = displayWordCount("Introduction_InText");
-    const AnalysisCount = displayWordCount("Analysis_InText");
-    // Calculate the sum of all selected sections
-    const totalWordCount = IntroductionCount + AnalysisCount;
-    // Display the total word count
-    document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
-  }
-  // Run the function for specific sections and display total count when the page loads
-  window.onload = displayTotalWordCount;
-</script>
+	  
 
+<p id="totalWordCount">Calculating word count...</p>
+
+<hr>
+
+<script>
+  // Function to calculate word count for a section
+  function displayWordCount(sectionId) {
+    const section = document.getElementById(sectionId);
+
+    if (!section) {
+      console.error("Section not found: " + sectionId);
+      return 0;
+    }
+
+    const text = section.textContent.trim();
+
+    if (text === "") {
+      return 0;
+    }
+
+    return text.split(/\s+/).length;
+  }
+
+  // Calculate total word count
+  function displayTotalWordCount() {
+
+    const AbstractCount =
+      displayWordCount("Abstract_InText");
+
+    const IntroductionCount =
+      displayWordCount("Introduction_InText");
+
+    const AnalysisCount =
+      displayWordCount("Analysis_InText");
+
+    const DiscussionCount =
+      displayWordCount("Discussion_InText");
+
+    // Add all four sections together
+    const totalWordCount =
+      AbstractCount +
+      IntroductionCount +
+      AnalysisCount +
+      DiscussionCount;
+
+    // Display individual and total counts
+    document.getElementById("totalWordCount").innerText =
+      `Abstract: ${AbstractCount} | ` +
+      `Introduction: ${IntroductionCount} | ` +
+      `Analysis: ${AnalysisCount} | ` +
+      `Discussion: ${DiscussionCount} | ` +
+      `TOTAL WORD COUNT: ${totalWordCount}`;
+  }
+
+  // Run when page loads
+  document.addEventListener("DOMContentLoaded", displayTotalWordCount);
+</script>
 
