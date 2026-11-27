@@ -228,8 +228,6 @@ flooding in a densley urbanised environment.
 </script>
 
 
-<!-- Word count display -->
-
 <p id="totalWordCount">Calculating word count...</p>
 
 <script>
@@ -262,10 +260,18 @@ function displayTotalWordCount() {
 		`Conclusion: ${conclusion} | ` +
         `TOTAL WORD COUNT: ${total}`;
 }
-
+	
 document.addEventListener("DOMContentLoaded", displayTotalWordCount);
 </script>
 </body>
 
 </script>
+
+	<styke>/* Position in the bottom-right corner of the screen */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+	</styke>
+	
 
