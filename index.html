@@ -208,16 +208,13 @@ function countWords(id) {
 
 function displayTotalWordCount() {
 
-    const abstract = countWords("Abstract_InText");
-
-    const introduction = countWords("Introduction_InText");
+     const introduction = countWords("Introduction_InText");
 
     const analysisDiscussion = countWords("AnalysisDiscussion_InText");
 
-    const total = abstract + introduction + analysisDiscussion;
+    const total = introduction + analysisDiscussion;
 
     document.getElementById("totalWordCount").innerText =
-        `Abstract: ${abstract} | ` +
         `Introduction: ${introduction} | ` +
         `Analysis and Discussion: ${analysisDiscussion} | ` +
         `TOTAL WORD COUNT: ${total}`;
