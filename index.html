@@ -63,7 +63,7 @@
 		<td><a href="#AnalysisDiscussion_InText">Analysis and Discussion</td>
       </tr>
 	  <tr>
-        <td><a href="#Conclusion_InText">Abstract</td>
+        <td><a href="#Conclusion_InText">Conclusion</td>
       </tr>
 		<tr>
         <td><a href="#References">References</td>
@@ -252,11 +252,14 @@ function displayTotalWordCount() {
 
     const analysisDiscussion = countWords("AnalysisDiscussion_InText");
 
-    const total = introduction + analysisDiscussion;
+	const conclusion = countWords("Conclusion_InText");
+
+    const total = introduction + analysisDiscussion + conclusion;
 
     document.getElementById("totalWordCount").innerText =
         `Introduction: ${introduction} | ` +
         `Analysis and Discussion: ${analysisDiscussion} | ` +
+		`Analysis and Discussion: ${conclusion} | ` +
         `TOTAL WORD COUNT: ${total}`;
 }
 
